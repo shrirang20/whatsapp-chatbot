@@ -20,7 +20,7 @@ def send_image_to_huggingface(person_image_url, dress_image_url):
     else:
         return None
 
-@app.route('/webhook', methods=['POST'])
+@app.route('/webhook', methods=['GET','POST'])
 def whatsapp():
     # Get incoming message details from Twilio
     incoming_msg = request.values.get('Body', '').lower()
