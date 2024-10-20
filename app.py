@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Function to send images to Hugging Face
 def send_image_to_huggingface(person_image_url, dress_image_url):
-    endpoint_url = "https://huggingface.co/spaces/Kwai-Kolors/Kolors-Virtual-Try-On/api/predict"
+    endpoint_url = "https://huggingface.co/spaces/Kwai-Kolors/Kolors-Virtual-Try-On"
     data = {
         'data': [
             person_image_url,  # Person's image URL
@@ -20,7 +20,7 @@ def send_image_to_huggingface(person_image_url, dress_image_url):
     else:
         return None
 
-@app.route('/whatsapp', methods=['POST'])
+@app.route('/webhook', methods=['POST'])
 def whatsapp():
     # Get incoming message details from Twilio
     incoming_msg = request.values.get('Body', '').lower()
