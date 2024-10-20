@@ -27,6 +27,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 @app.route('/webhook', methods=['GET','POST'])
 def whatsapp():
+    logging.info('Received request on /webhook')
     # Get incoming message details from Twilio
     incoming_msg = request.values.get('Body', '').lower()
     media_url_person = request.values.get('MediaUrl0', None)  # Person's image
