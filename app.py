@@ -1,3 +1,4 @@
+import logging
 from flask import Flask, request, jsonify
 from twilio.twiml.messaging_response import MessagingResponse
 import requests
@@ -19,6 +20,10 @@ def send_image_to_huggingface(person_image_url, dress_image_url):
         return result['data'][0]  # Image result from Hugging Face API
     else:
         return None
+    
+
+# Setup basic logging
+logging.basicConfig(level=logging.DEBUG)
 
 @app.route('/webhook', methods=['GET','POST'])
 def whatsapp():
